@@ -20,6 +20,7 @@ public class HashMap<K, V> implements Iterable<HashMap<K, V>.Entity> {
         private int valueIterator = 0;
         private int bucketIterator = 0;
         private Bucket.Node node;
+        int countNode = 0;
 
         @Override
         public boolean hasNext() {
@@ -32,13 +33,16 @@ public class HashMap<K, V> implements Iterable<HashMap<K, V>.Entity> {
             while (buckets[bucketIterator] == null) {
                 bucketIterator++;
             }
-            node = buckets[bucketIterator].head;
+            if (countNode == 0)
+                node = buckets[bucketIterator].head;
             if (node.next == null) {
                 bucketIterator++;
+                countNode = 0;
                 return node.value;
             }
             Bucket.Node buf = node;
             node = node.next;
+            countNode++;
             return buf.value;
         }
     }
