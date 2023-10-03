@@ -24,6 +24,8 @@ public class HashMap<K, V> implements Iterable<HashMap<K, V>.Entity> {
 
         @Override
         public boolean hasNext() {
+            if (buckets == null)
+                return false;
             return valueIterator != size;
         }
 
