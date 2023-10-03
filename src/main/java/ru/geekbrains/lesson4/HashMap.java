@@ -54,7 +54,7 @@ public class HashMap<K, V> implements Iterable<HashMap<K, V>.Entity> {
                 continue;
             Bucket.Node node = buckets[i].head;
             while (node != null) {
-                builder.append("Key: ").append(node.value.getKey()).append(" Value: ").append(node.value.getValue()).append("\n");
+                builder.append("Key: ").append(node.value.getKey().toString()).append(" Value: ").append(node.value.getValue().toString()).append("\n");
                 node = node.next;
             }
         }
